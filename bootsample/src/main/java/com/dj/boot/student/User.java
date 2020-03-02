@@ -1,10 +1,14 @@
 package com.dj.boot.student;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User implements Serializable {
@@ -13,6 +17,9 @@ public class User implements Serializable {
     private int id;
     private String name;
     private String address;
+    @OneToMany(mappedBy = "user" , targetEntity = Subject.class,cascade = CascadeType.ALL )
+    private List<Subject> subjectList=new ArrayList<>();
+    
     public User(int id, String name, String address) {
         super();
         this.id = id;
@@ -25,6 +32,15 @@ public class User implements Serializable {
         // TODO Auto-generated constructor stub
     }
     
+    public List<Subject> getSubjectList() {
+        return subjectList;
+    }
+
+    public void addSubject(Subject subject) {
+        this.subjectList.add(subject);
+        subject.setUser(this);
+    }
+
     public int getId() {
         return id;
     }

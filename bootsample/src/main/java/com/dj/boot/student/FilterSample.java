@@ -1,11 +1,13 @@
 package com.dj.boot.student;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-//@JsonIgnoreProperties({"desc","id"})
-@JsonFilter("SampleFilter")
-public class FilterSample {
+@JsonIgnoreProperties({"desc"})
+//@JsonFilter("SampleFilter")
+public class FilterSample implements Serializable {
 
 	private String id;
 	private String name;
