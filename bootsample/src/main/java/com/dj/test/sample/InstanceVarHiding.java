@@ -1,15 +1,32 @@
 package com.dj.test.sample;
 
 class A{
+    static int k;
+    static {
+        k=20;
+    }
     int num;
     A(){
        num=10; 
     }
+    static void check() {
+        System.out.println("its static check");
+    }
 }
 public class InstanceVarHiding  extends A{
+    static int k;
+    static {
+        k=30;
+    }
+    int getstaticK() {
+        return super.k;
+    }
     int num;
     InstanceVarHiding(){
         num=20;
+    }
+    static void check() {
+        System.out.println("its static check at child class");
     }
     public int getVal() {
         int num=30;
@@ -21,7 +38,8 @@ public class InstanceVarHiding  extends A{
         InstanceVarHiding obj=new InstanceVarHiding();
         System.out.println(obj.num);
         System.out.println(obj.getVal());
-        
+        System.out.println(obj.k+">>"+obj.getstaticK());
+        InstanceVarHiding.check();
     }
 
 }

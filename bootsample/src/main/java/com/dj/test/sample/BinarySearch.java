@@ -34,18 +34,34 @@ class BinarySearch
      // in array 
      return -1; 
  } 
+ 
+ int binarySearch2(int arr[], int l, int r, int x) 
+ {
+     while(l<=r) {
+         int mid=(l+r)/2;
+         if(arr[mid]==x)
+             return mid;
+         else if(arr[mid]<x) {
+             l=mid+1;
+         }
+         else {
+             r=mid-1;
+         }
+     }
+     return -1;
+ }
 
  // Driver method to test above 
  public static void main(String args[]) 
  { 
      BinarySearch ob = new BinarySearch(); 
-     int arr[] = {2,8,4,10,9}; 
+     int arr[] = {2,4,8,9,10}; 
      List<Integer> list=(List<Integer>)Arrays.asList(2,8,4,10,9);
      System.out.println(Collections.binarySearch(list, new Integer(8)));
     //System.out.println(Arrays.binarySearch(arr, 8));
      int n = arr.length; 
-     int x = 9; 
-     int result = ob.binarySearch(arr,0,n-1,x); 
+     int x = 10; 
+     int result = ob.binarySearch2(arr,0,n-1,x); 
      if (result == -1) 
          System.out.println("Element not present"); 
      else

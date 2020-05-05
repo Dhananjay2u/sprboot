@@ -58,7 +58,6 @@ class Fruit
     }
     public Number getNumber() throws NullPointerException, IOException {
         return null;
-        
     }
     
 } 
